@@ -71,12 +71,18 @@ body{
      be in the center of the header  */
     transform: translate(-50%,-50%);
     /* you are shifting the element within itself to the center of the header  */
+    text-align: center;
+    /* you are using text-align to be center to 
+    make the text within the button and the button itself centered */
 }
 
 .heading-primary{
     color: white;
     text-transform: uppercase;
     /* block element occupy the entire width and they create line breaks after and before them */
+    backface-visibility: hidden;
+    /* apparently this backface visibility fixes a shaking issue */
+    margin: 60px;
 }
 
 .heading-primary-main{
@@ -84,10 +90,151 @@ body{
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+
+    /* animation-delay: 3s;
+    animation-iteration-count: 3;
+    
+    */
 }
 .heading-primary-sub{
     display: block;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+    animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft{
+    0%{
+        opacity:0;
+        transform: translateX(-100px);
+        /* -100px because you are slide from the original position where it was and pull it from left */
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+
+    /* this is for the bounce back */
+
+    100%{
+        opacity: 1;
+        transform: translatex(0);
+    }
+}
+
+@keyframes moveInRight{
+    0%{
+        opacity:0;
+        transform: translateX(100px);
+        /* 100px because you are slide from the original position where it was and pull it from left */
+    }
+
+    80%{
+        transform: translateX(10px);
+    }
+
+    /* this is for the bounce back */
+
+    100%{
+        opacity: 1;
+        transform: translatex(0);
+    }
+}
+
+@keyframes moveInBottom{
+    0%{
+        opacity:0;
+        transform: translateY(30px);
+        /* 100px because you are slide from the original position where it was and pull it from left */
+    }
+
+
+    /* this is for the bounce back */
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ /* .btn:link is psudoclass */
+.btn:link,
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    /* display it inline to the block  */
+    border-radius: 100px;
+    /* transition makes the blimp animation for the button 
+    - all is for which properties you want to animate
+    -transition property has to be on initial state*/
+    transition: all 0.1s;
+    position: relative;
+}
+
+/* this makes button go up when you hover your cursor over the button 
+-shadow - offset in x direction, y direction, blur, color of shadow*/
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* btn:active is when you active the button. this makes the button press down when you press down */
+.btn:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.btn-white{
+    background-color: white;
+    color: #777; 
+    font-weight: 700;
+}
+
+/*pseudo element
+trick is to add an element that looks exactly like the button that we already have but we
+put it behind the button
+-then when we hover over the button, then this hidden pseudo element goes back behind the button
+-you have to specify the content in order for the element to appear
+- bc this element is a child of btn, it takes the width and heigh property of btn
+-absolute position needs to have a refernce
+-reference is the first element with the relative position that it can find
+-now this case it would be a header but we want it to be hidden after button
+so the reference should be the button. 
+*/
+.btn::after{
+    content:'';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after{
+    background-color: white;
+}
+
+/* psuedo element after we hover*/
+.btn:hover::after{
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity:0;
+}
+
+/* .5s is the time it takes to execute the animation 0.75s is the delay
+animation-fill-mode: backwards prevents button to render first before all of text-box */
+.btn-animated{
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode:backwards;
 }
