@@ -1,0 +1,93 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+
+}
+
+.header{
+    height: 95vh; 
+    /* at every point, the height of this box should be 95% of the viewport height */
+    /* background-image: linear-gradient(to right bottom, #7ed56fe1,#28b485ce), url(../img/hero.jpg); */
+    /* apparently hexidecmial actually convey opacity */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126,213,111,0.8), 
+        rgba(40,180, 131, 0.8)), 
+        url(../img/hero.jpg);
+    
+    /* two background images - one on top of the other */
+    
+    background-size: cover; 
+    /* cover is whatever the width of the viewport or the element. it'll always try to fit the element inside of the box */
+    background-position: top;
+    /* always allow picture to stay at the top when you crop the broswer; */
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% ); 
+    /* to create the triangle clip off of the picture */
+    /*specify four corners of the polygon to save what part of the picture , define points clockwise*/
+
+}
+
+.logo-box{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo{
+    height: 35px; 
+    /*you can just set height and width will be auto control by broswer*/
+}
+
+.text-box{
+    position: absolute;
+    /* absolute positioning allow you to center the box in the middle of the header */
+    /* 40% and 50% are in relation to the parent element - header */
+    top: 40%;
+    left: 50%;
+    /* you are using transform to move the center of the text-box to be in the center
+     point of the header instead of the top left corner of the text box to 
+     be in the center of the header  */
+    transform: translate(-50%,-50%);
+    /* you are shifting the element within itself to the center of the header  */
+}
+
+.heading-primary{
+    color: white;
+    text-transform: uppercase;
+    /* block element occupy the entire width and they create line breaks after and before them */
+}
+
+.heading-primary-main{
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
