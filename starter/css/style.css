@@ -7,15 +7,24 @@ Dark green: #28b485
 
 */
 
-*{
+*,
+*::after,
+*::before{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: inherit;
+    /* you can force inheritance with inherit keyword - it is better in css community
+    to put box sizing in the body instead of up here */
     /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
 }
 
 html{
-    font-size: 10px;
+    /* apparently your root font size to be a pixel is bad bc if someone increase the size of the
+    font-size in browser, it will just be fixed at 10 pixel?
+    the pixel just overrides what user can change 
+    10/16 = 62.5% bc 100% is 16 but you really just want 10 */
+    /* font-size: 10px; */
+    font-size: 62.5%;
     /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */
 }
 
@@ -27,7 +36,10 @@ body{
     color: #777;
     /* padding: 30px; */
     padding: 3 rem;
-
+    
+    /* border box allows padding and borders to canabalize within the true width/height of the div
+    in order to preserve the true width and height sizing that you want to be  */
+    box-sizing: border-box; 
 }
 
 .header{
@@ -55,7 +67,7 @@ body{
 
 }
 
-.logo-box{
+.header__logo-box{
     position: absolute;
     /* top: 40px;
     left: 40px; */
@@ -63,13 +75,13 @@ body{
     left: 4rem;
 }
 
-.logo{
+.header__logo{
     /* height: 35px;  */
     height: 3.5rem; 
     /*you can just set height and width will be auto control by broswer*/
 }
 
-.text-box{
+.header__text-box{
     position: absolute;
     /* absolute positioning allow you to center the box in the middle of the header */
     /* 40% and 50% are in relation to the parent element - header */
@@ -95,7 +107,7 @@ body{
     margin: 6rem;
 }
 
-.heading-primary-main{
+.heading-primary--main{
     display: block;
     /* font-size: 60px; */
     font-size: 6rem;
@@ -113,7 +125,7 @@ body{
     
     */
 }
-.heading-primary-sub{
+.heading-primary--sub{
     display: block;
     /* font-size: 20px; */
     font-size: 2rem;
@@ -198,6 +210,7 @@ body{
     -transition property has to be on initial state*/
     transition: all 0.1s;
     position: relative;
+    font-size: 1.6rem;
 }
 
 /* this makes button go up when you hover your cursor over the button 
@@ -215,7 +228,7 @@ body{
     box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
 }
 
-.btn-white{
+.btn--white{
     background-color: white;
     color: #777; 
     font-weight: 700;
@@ -246,7 +259,7 @@ so the reference should be the button.
     transition: all .4s;
 }
 
-.btn-white::after{
+.btn--white::after{
     background-color: white;
 }
 
@@ -258,7 +271,7 @@ so the reference should be the button.
 
 /* .5s is the time it takes to execute the animation 0.75s is the delay
 animation-fill-mode: backwards prevents button to render first before all of text-box */
-.btn-animated{
+.btn--animated{
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode:backwards;
 }
