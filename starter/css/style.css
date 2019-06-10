@@ -14,13 +14,19 @@ Dark green: #28b485
     /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
 }
 
+html{
+    font-size: 10px;
+    /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */
+}
+
 body{
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    /* padding: 30px; */
+    padding: 3 rem;
 
 }
 
@@ -51,12 +57,15 @@ body{
 
 .logo-box{
     position: absolute;
-    top: 40px;
-    left: 40px;
+    /* top: 40px;
+    left: 40px; */
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo{
-    height: 35px; 
+    /* height: 35px;  */
+    height: 3.5rem; 
     /*you can just set height and width will be auto control by broswer*/
 }
 
@@ -82,14 +91,17 @@ body{
     /* block element occupy the entire width and they create line breaks after and before them */
     backface-visibility: hidden;
     /* apparently this backface visibility fixes a shaking issue */
-    margin: 60px;
+    /* margin: 60px; */
+    margin: 6rem;
 }
 
 .heading-primary-main{
     display: block;
-    font-size: 60px;
+    /* font-size: 60px; */
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    /* letter-spacing: 35px; */
+    letter-spacing: 3.5rem;
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -103,21 +115,25 @@ body{
 }
 .heading-primary-sub{
     display: block;
-    font-size: 20px;
+    /* font-size: 20px; */
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    /* letter-spacing: 17.4px; */
+    letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out;
 }
 
 @keyframes moveInLeft{
     0%{
         opacity:0;
-        transform: translateX(-100px);
+        /* transform: translateX(-100px); */
+        transform: translateX(-10rem);
         /* -100px because you are slide from the original position where it was and pull it from left */
     }
 
     80%{
-        transform: translateX(10px);
+        /* transform: translateX(10px); */
+        transform: translateX(1rem);
     }
 
     /* this is for the bounce back */
@@ -131,12 +147,14 @@ body{
 @keyframes moveInRight{
     0%{
         opacity:0;
-        transform: translateX(100px);
+        /* transform: translateX(100px); */
+        transform: translateX(10rem);
         /* 100px because you are slide from the original position where it was and pull it from left */
     }
 
     80%{
-        transform: translateX(10px);
+        /* transform: translateX(10px); */
+        transform: translateX(-1rem);
     }
 
     /* this is for the bounce back */
@@ -150,7 +168,8 @@ body{
 @keyframes moveInBottom{
     0%{
         opacity:0;
-        transform: translateY(30px);
+        /* transform: translateY(30px); */
+        transform: translateY(3rem);
         /* 100px because you are slide from the original position where it was and pull it from left */
     }
 
@@ -168,10 +187,12 @@ body{
 .btn:visited{
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    /* padding: 15px 40px; */
+    padding: 1.5rem 4rem;
     display: inline-block;
     /* display it inline to the block  */
-    border-radius: 100px;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
     /* transition makes the blimp animation for the button 
     - all is for which properties you want to animate
     -transition property has to be on initial state*/
@@ -183,13 +204,15 @@ body{
 -shadow - offset in x direction, y direction, blur, color of shadow*/
 .btn:hover{
     transform:translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
+    box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
 }
 
 /* btn:active is when you active the button. this makes the button press down when you press down */
 .btn:active{
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    /* box-shadow: 0 5px 10px rgba(0,0,0,0.2); */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.2);
 }
 
 .btn-white{
@@ -214,7 +237,8 @@ so the reference should be the button.
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
     position: absolute;
     top:0;
     left: 0;
