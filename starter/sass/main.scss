@@ -1,3 +1,22 @@
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+
+@import "components/buttons";
+
+@import 'layout/grid';
+@import "layout/header";
+
+@import "pages/home";
+
+//live-server
+//npm run compile:sass
+
 /*
 COLORS:
 
@@ -7,103 +26,103 @@ Dark green: #28b485
 
 */
 
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
+// $color-primary: #55c57a;
+// $color-primary-light: #7ed56f;
+// $color-primary-dark: #28b485;
 
-$color-grey-dark: #777;
-$color-white: #fff;
-$color-black: #000;
+// $color-grey-dark: #777;
+// $color-white: #fff;
+// $color-black: #000;
 
-*,
-*::after,
-*::before{
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-  /* you can force inheritance with inherit keyword - it is better in css community
-  to put box sizing in the body instead of up here */
-  /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
-}
+// *,
+// *::after,
+// *::before{
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: inherit;
+//   /* you can force inheritance with inherit keyword - it is better in css community
+//   to put box sizing in the body instead of up here */
+//   /* change box model so that borders and paddings are no longer added to the total width or total height that we specify for a box. so we are getting rid of that behavior */
+// }
 
-html{
-  /* apparently your root font size to be a pixel is bad bc if someone increase the size of the
-  font-size in browser, it will just be fixed at 10 pixel?
-  the pixel just overrides what user can change
-  10/16 = 62.5% bc 100% is 16 but you really just want 10 */
-  /* font-size: 10px; */
-  font-size: 62.5%;
-  /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */
-}
+// html{
+//   /* apparently your root font size to be a pixel is bad bc if someone increase the size of the
+//   font-size in browser, it will just be fixed at 10 pixel?
+//   the pixel just overrides what user can change
+//   10/16 = 62.5% bc 100% is 16 but you really just want 10 */
+//   /* font-size: 10px; */
+//   font-size: 62.5%;
+//   /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */
+// }
 
-body{
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  /* font-size: 16px; */
-  line-height: 1.7;
-  color: $color-grey-dark;
-  /* padding: 30px; */
-  padding: 3 rem;
+// body{
+//   font-family: "Lato", sans-serif;
+//   font-weight: 400;
+//   /* font-size: 16px; */
+//   line-height: 1.7;
+//   color: $color-grey-dark;
+//   /* padding: 30px; */
+//   padding: 3 rem;
   
-  /* border box allows padding and borders to canabalize within the true width/height of the div
-  in order to preserve the true width and height sizing that you want to be  */
-  box-sizing: border-box;
-}
+//   /* border box allows padding and borders to canabalize within the true width/height of the div
+//   in order to preserve the true width and height sizing that you want to be  */
+//   box-sizing: border-box;
+// }
 
-.header{
-  height: 95vh;
-  /* at every point, the height of this box should be 95% of the viewport height */
-  /* background-image: linear-gradient(to right bottom, #7ed56fe1,#28b485ce), url(../img/hero.jpg); */
-  /* apparently hexidecmial actually convey opacity */
-  background-image: linear-gradient(
-    to right bottom,
-    rgba($color-primary-light,0.8),
-    rgba($color-primary-dark, 0.8)),
-    url(../img/hero.jpg);
+// .header{
+//   height: 95vh;
+//   /* at every point, the height of this box should be 95% of the viewport height */
+//   /* background-image: linear-gradient(to right bottom, #7ed56fe1,#28b485ce), url(../img/hero.jpg); */
+//   /* apparently hexidecmial actually convey opacity */
+//   background-image: linear-gradient(
+//     to right bottom,
+//     rgba($color-primary-light,0.8),
+//     rgba($color-primary-dark, 0.8)),
+//     url(../img/hero.jpg);
   
-  /* two background images - one on top of the other */
+//   /* two background images - one on top of the other */
   
-  background-size: cover;
-  /* cover is whatever the width of the viewport or the element. it'll always try to fit the element inside of the box */
-  background-position: top;
-  /* always allow picture to stay at the top when you crop the broswer; */
-  position: relative;
+//   background-size: cover;
+//   /* cover is whatever the width of the viewport or the element. it'll always try to fit the element inside of the box */
+//   background-position: top;
+//   /* always allow picture to stay at the top when you crop the broswer; */
+//   position: relative;
 
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
-  /* to create the triangle clip off of the picture */
-  /*specify four corners of the polygon to save what part of the picture , define points clockwise*/
+//   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
+//   /* to create the triangle clip off of the picture */
+//   /*specify four corners of the polygon to save what part of the picture , define points clockwise*/
   
   
-  &__logo-box{
-    position: absolute;
-    /* top: 40px;
-    left: 40px; */
-    top: 4rem;
-    left: 4rem;
-  }
+//   &__logo-box{
+//     position: absolute;
+//     /* top: 40px;
+//     left: 40px; */
+//     top: 4rem;
+//     left: 4rem;
+//   }
   
-  .&__logo{
-    /* height: 35px;  */
-    height: 3.5rem;
-    /*you can just set height and width will be auto control by broswer*/
-  }
+//   &__logo{
+//     /* height: 35px;  */
+//     height: 3.5rem;
+//     /*you can just set height and width will be auto control by broswer*/
+//   }
 
-  &__text-box{
-    position: absolute;
-    /* absolute positioning allow you to center the box in the middle of the header */
-    /* 40% and 50% are in relation to the parent element - header */
-    top: 40%;
-    left: 50%;
-    /* you are using transform to move the center of the text-box to be in the center
-     point of the header instead of the top left corner of the text box to
-     be in the center of the header  */
-    transform: translate(-50%,-50%);
-    /* you are shifting the element within itself to the center of the header  */
-    text-align: center;
-    /* you are using text-align to be center to
-    make the text within the button and the button itself centered */
-  }
-}
+//   &__text-box{
+//     position: absolute;
+//     /* absolute positioning allow you to center the box in the middle of the header */
+//     /* 40% and 50% are in relation to the parent element - header */
+//     top: 40%;
+//     left: 50%;
+//     /* you are using transform to move the center of the text-box to be in the center
+//      point of the header instead of the top left corner of the text box to
+//      be in the center of the header  */
+//     transform: translate(-50%,-50%);
+//     /* you are shifting the element within itself to the center of the header  */
+//     text-align: center;
+//     /* you are using text-align to be center to
+//     make the text within the button and the button itself centered */
+//   }
+// }
 
 // .header__logo-box{
 //     position: absolute;
@@ -113,11 +132,11 @@ body{
 //     left: 4rem;
 // }
 
-.header__logo{
-  /* height: 35px;  */
-  height: 3.5rem;
-  /*you can just set height and width will be auto control by broswer*/
-}
+// .header__logo{
+//   /* height: 35px;  */
+//   height: 3.5rem;
+//   /*you can just set height and width will be auto control by broswer*/
+// }
 
 // .header__text-box{
 //     position: absolute;
@@ -135,43 +154,43 @@ body{
 //     make the text within the button and the button itself centered */
 // }
 
-.heading-primary{
-    color:$color-white;
-    text-transform: uppercase;
-    /* block element occupy the entire width and they create line breaks after and before them */
-    backface-visibility: hidden;
-    /* apparently this backface visibility fixes a shaking issue */
-    /* margin: 60px; */
-    margin: 6rem;
+// .heading-primary{
+//     color:$color-white;
+//     text-transform: uppercase;
+//     /* block element occupy the entire width and they create line breaks after and before them */
+//     backface-visibility: hidden;
+//     /* apparently this backface visibility fixes a shaking issue */
+//     /* margin: 60px; */
+//     margin: 6rem;
     
-  &--main{
-    display: block;
-    /* font-size: 60px; */
-    font-size: 6rem;
-    font-weight: 400;
-    /* letter-spacing: 35px; */
-    letter-spacing: 3.5rem;
+//   &--main{
+//     display: block;
+//     /* font-size: 60px; */
+//     font-size: 6rem;
+//     font-weight: 400;
+//     /* letter-spacing: 35px; */
+//     letter-spacing: 3.5rem;
 
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
+//     animation-name: moveInLeft;
+//     animation-duration: 1s;
+//     animation-timing-function: ease-out;
 
-    /* animation-delay: 3s;
-    animation-iteration-count: 3;
+//     /* animation-delay: 3s;
+//     animation-iteration-count: 3;
     
-    */
-  }
+//     */
+//   }
     
-  &--sub{
-    display: block;
-    /* font-size: 20px; */
-    font-size: 2rem;
-    font-weight: 700;
-    /* letter-spacing: 17.4px; */
-    letter-spacing: 1.75rem;
-    animation: moveInRight 1s ease-out;
-  }
-}
+//   &--sub{
+//     display: block;
+//     /* font-size: 20px; */
+//     font-size: 2rem;
+//     font-weight: 700;
+//     /* letter-spacing: 17.4px; */
+//     letter-spacing: 1.75rem;
+//     animation: moveInRight 1s ease-out;
+//   }
+// }
 
 // .heading-primary--main{
 //     display: block;
@@ -200,149 +219,149 @@ body{
 //     animation: moveInRight 1s ease-out;
 // }
 
-@keyframes moveInLeft{
-    0%{
-        opacity:0;
-        /* transform: translateX(-100px); */
-        transform: translateX(-10rem);
-        /* -100px because you are slide from the original position where it was and pull it from left */
-    }
+// @keyframes moveInLeft{
+//     0%{
+//         opacity:0;
+//         /* transform: translateX(-100px); */
+//         transform: translateX(-10rem);
+//         /* -100px because you are slide from the original position where it was and pull it from left */
+//     }
 
-    80%{
-        /* transform: translateX(10px); */
-        transform: translateX(1rem);
-    }
+//     80%{
+//         /* transform: translateX(10px); */
+//         transform: translateX(1rem);
+//     }
 
-    /* this is for the bounce back */
+//     /* this is for the bounce back */
 
-    100%{
-        opacity: 1;
-        transform: translatex(0);
-    }
-}
+//     100%{
+//         opacity: 1;
+//         transform: translatex(0);
+//     }
+// }
 
-@keyframes moveInRight{
-    0%{
-        opacity:0;
-        /* transform: translateX(100px); */
-        transform: translateX(10rem);
-        /* 100px because you are slide from the original position where it was and pull it from left */
-    }
+// @keyframes moveInRight{
+//     0%{
+//         opacity:0;
+//         /* transform: translateX(100px); */
+//         transform: translateX(10rem);
+//         /* 100px because you are slide from the original position where it was and pull it from left */
+//     }
 
-    80%{
-        /* transform: translateX(10px); */
-        transform: translateX(-1rem);
-    }
+//     80%{
+//         /* transform: translateX(10px); */
+//         transform: translateX(-1rem);
+//     }
 
-    /* this is for the bounce back */
+//     /* this is for the bounce back */
 
-    100%{
-        opacity: 1;
-        transform: translatex(0);
-    }
-}
+//     100%{
+//         opacity: 1;
+//         transform: translatex(0);
+//     }
+// }
 
-@keyframes moveInBottom{
-    0%{
-        opacity:0;
-        /* transform: translateY(30px); */
-        transform: translateY(3rem);
-        /* 100px because you are slide from the original position where it was and pull it from left */
-    }
+// @keyframes moveInBottom{
+//     0%{
+//         opacity:0;
+//         /* transform: translateY(30px); */
+//         transform: translateY(3rem);
+//         /* 100px because you are slide from the original position where it was and pull it from left */
+//     }
 
 
-    /* this is for the bounce back */
+//     /* this is for the bounce back */
 
-    100%{
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+//     100%{
+//         opacity: 1;
+//         transform: translateY(0);
+//     }
+// }
 
 /* .btn:link is psudoclass */
  
-.btn{
-  &:link,
-  &:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    /* padding: 15px 40px; */
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    /* display it inline to the block  */
-    /* border-radius: 100px; */
-    border-radius: 10rem;
-    /* transition makes the blimp animation for the button
-    - all is for which properties you want to animate
-    -transition property has to be on initial state*/
-    transition: all 0.1s;
-    position: relative;
-    font-size: 1.6rem;
-  }
+// .btn{
+//   &:link,
+//   &:visited{
+//     text-transform: uppercase;
+//     text-decoration: none;
+//     /* padding: 15px 40px; */
+//     padding: 1.5rem 4rem;
+//     display: inline-block;
+//     /* display it inline to the block  */
+//     /* border-radius: 100px; */
+//     border-radius: 10rem;
+//     /* transition makes the blimp animation for the button
+//     - all is for which properties you want to animate
+//     -transition property has to be on initial state*/
+//     transition: all 0.1s;
+//     position: relative;
+//     font-size: 1.6rem;
+//   }
   
-  /* this makes button go up when you hover your cursor over the button
-  -shadow - offset in x direction, y direction, blur, color of shadow*/
-  &:hover{
-    transform:translateY(-3px);
-    /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
-    box-shadow: 0 1rem 2rem rgba($color-black,0.2);
+//   /* this makes button go up when you hover your cursor over the button
+//   -shadow - offset in x direction, y direction, blur, color of shadow*/
+//   &:hover{
+//     transform:translateY(-3px);
+//     /* box-shadow: 0 10px 20px rgba(0,0,0,0.2); */
+//     box-shadow: 0 1rem 2rem rgba($color-black,0.2);
     
-    /* psuedo element after we hover*/
-    &::after{
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity:0;
-    }
-  }
+//     /* psuedo element after we hover*/
+//     &::after{
+//       transform: scaleX(1.4) scaleY(1.6);
+//       opacity:0;
+//     }
+//   }
   
-  /* btn:active is when you active the button. this makes the button press down when you press down */
-  &:active{
-    transform: translateY(-1px);
-    /* box-shadow: 0 5px 10px rgba(0,0,0,0.2); */
-    box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
-  }
+//   /* btn:active is when you active the button. this makes the button press down when you press down */
+//   &:active{
+//     transform: translateY(-1px);
+//     /* box-shadow: 0 5px 10px rgba(0,0,0,0.2); */
+//     box-shadow: 0 .5rem 1rem rgba($color-black,0.2);
+//   }
   
-  &--white{
-    background-color: $color-white;
-    color: $color-grey-dark;
-    font-weight: 700;
+//   &--white{
+//     background-color: $color-white;
+//     color: $color-grey-dark;
+//     font-weight: 700;
     
-    &::after{
-      background-color: $color-white;
-    }
-  }
+//     &::after{
+//       background-color: $color-white;
+//     }
+//   }
   
-  /*pseudo element
-  trick is to add an element that looks exactly like the button that we already have but we
-  put it behind the button
-  -then when we hover over the button, then this hidden pseudo element goes back behind the button
-  -you have to specify the content in order for the element to appear
-  - bc this element is a child of btn, it takes the width and heigh property of btn
-  -absolute position needs to have a refernce
-  -reference is the first element with the relative position that it can find
-  -now this case it would be a header but we want it to be hidden after button
-  so the reference should be the button.
-  */
-  &::after{
-    content:'';
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    /* border-radius: 100px; */
-    border-radius: 10rem;
-    position: absolute;
-    top:0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-  }
+//   /*pseudo element
+//   trick is to add an element that looks exactly like the button that we already have but we
+//   put it behind the button
+//   -then when we hover over the button, then this hidden pseudo element goes back behind the button
+//   -you have to specify the content in order for the element to appear
+//   - bc this element is a child of btn, it takes the width and heigh property of btn
+//   -absolute position needs to have a refernce
+//   -reference is the first element with the relative position that it can find
+//   -now this case it would be a header but we want it to be hidden after button
+//   so the reference should be the button.
+//   */
+//   &::after{
+//     content:'';
+//     display: inline-block;
+//     height: 100%;
+//     width: 100%;
+//     /* border-radius: 100px; */
+//     border-radius: 10rem;
+//     position: absolute;
+//     top:0;
+//     left: 0;
+//     z-index: -1;
+//     transition: all .4s;
+//   }
   
-  /* .5s is the time it takes to execute the animation 0.75s is the delay
-  animation-fill-mode: backwards prevents button to render first before all of text-box */
-  &--animated{
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode:backwards;
-  }
-}
+//   /* .5s is the time it takes to execute the animation 0.75s is the delay
+//   animation-fill-mode: backwards prevents button to render first before all of text-box */
+//   &--animated{
+//     animation: moveInBottom .5s ease-out .75s;
+//     animation-fill-mode:backwards;
+//   }
+// }
 
 
 

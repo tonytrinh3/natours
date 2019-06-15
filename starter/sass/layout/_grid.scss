@@ -1,0 +1,72 @@
+.row{
+    max-width:$grid-width;
+    background-color: #eee;
+    color: white;
+    //trick people use to center block element inside another block element
+    //auto means browser will auto set margin for left and right and since
+    //it is set to auto, left and right will be the same 
+    margin: 0 auto;
+   
+    //select everything except last child
+    &:not(:last-child){
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+
+    // ^ selects all of the class 
+    // this is to select all class similar to this criteria
+    [class^="col-"]{
+        background-color: orangered;
+        //always float columns to the left
+        /*all child element is floated, which leads to height collapses and become zero*/
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2{
+        //you can use mix units
+        width: calc( (100% - #{$gutter-horizontal}) / 2);
+    //     background-color: orangered;
+    //     //always float columns to the left
+    //     /*all child element is floated, which leads to height collapses and become zero*/
+    //     float: left;
+        
+
+    //     &:not(:last-child){
+    //         margin-right: $gutter-horizontal;
+    //     }
+    }
+
+    .col-1-of-3{
+        //you can use mix units
+        width: calc( (100% - (2*#{$gutter-horizontal})) / 3);
+    }
+
+    .col-2-of-3{
+        //you can use mix units
+        width: calc( (2*(100% - (2*#{$gutter-horizontal})) / 3) + #{$gutter-horizontal});
+    }
+
+    .col-1-of-4{
+        //you can use mix units
+        width: calc( (100% - (3*#{$gutter-horizontal})) / 4);
+    }
+
+    .col-2-of-4{
+        //you can use mix units
+        width: calc( 2*( (100% - (3*#{$gutter-horizontal})) / 4) + #{$gutter-horizontal});
+
+    }
+
+    .col-3-of-4{
+        //you can use mix units
+        width: calc( 3*( (100% - (3*#{$gutter-horizontal})) / 4) + 2*#{$gutter-horizontal});
+
+    }
+
+}

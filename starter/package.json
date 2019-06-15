@@ -16,5 +16,6 @@
     "url": "https://github.com/tonytrinh3/natours/issues"
   },
   "homepage": "https://github.com/tonytrinh3/natours#readme",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {}
 }
