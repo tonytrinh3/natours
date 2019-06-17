@@ -3,3 +3,21 @@
   padding: 25rem 0;
   margin-top:-20vh;
 }
+
+.section-features{
+  padding: 20rem 0;//it is trendy for modern websites to have a lot of white spaces 
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light,0.8),
+    rgba($color-primary-dark, 0.8)),
+    url(../img/nat-4.jpg);
+    background-size: cover;
+
+    transform: skewY(-7deg);//to make that background have those angles
+  margin-top: -10rem;
+  
+    //bottom is a direct selector to the closes direct child of this parent, only touches to the nearest div below it
+    & > *{
+      transform: skewY(7deg); //skews everything back to normal - so in this case it affects the class=row
+    }
+}
