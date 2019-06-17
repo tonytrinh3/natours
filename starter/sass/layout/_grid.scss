@@ -1,7 +1,7 @@
 .row{
     max-width:$grid-width;
-    background-color: #eee;
-    color: white;
+    // background-color: #eee;
+    // color: white;
     //trick people use to center block element inside another block element
     //auto means browser will auto set margin for left and right and since
     //it is set to auto, left and right will be the same 
@@ -18,7 +18,7 @@
     // ^ selects all of the class 
     // this is to select all class similar to this criteria
     [class^="col-"]{
-        background-color: orangered;
+        // background-color: orangered;
         //always float columns to the left
         /*all child element is floated, which leads to height collapses and become zero*/
         float: left;

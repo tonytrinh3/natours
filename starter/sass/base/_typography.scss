@@ -5,7 +5,7 @@ body{
     line-height: 1.7;
     color: $color-grey-dark;
     /* padding: 30px; */
-    padding: 3 rem;
+    padding: 3rem;
     
   }
   
@@ -16,7 +16,7 @@ body{
     backface-visibility: hidden;
     /* apparently this backface visibility fixes a shaking issue */
     /* margin: 60px; */
-    margin: 6rem;
+    margin-bottom: 6rem;
     
   &--main{
     display: block;
@@ -51,4 +51,37 @@ body{
   font-size: 3.5rem;
   text-transform: uppercase;
   font-weight: 700;
+  //in order to make the gradiant stay behind the text only
+  display: inline-block;
+  background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+//   we set this background-clip property to text
+// it will clip the background (the linear gradiant), it will clip it to exactly the places
+// where the text sits 
+// so the background image or gradient will only be visible where the text is 
+  -webkit-background-clip:text;
+  // but we want to only see the background image
+  // make text transparent so you can see the background
+  //so now the linear gradiant is the color of the text 
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all .2s;
+
+  &:hover{
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+  }
+}
+
+.heading-tertiary{
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph{
+  font-size: $default-font-size;
+
+  &:not(:last-child){
+    margin-bottom: 3rem;
+  }
 }

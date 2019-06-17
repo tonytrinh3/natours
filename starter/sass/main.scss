@@ -8,6 +8,7 @@
 @import "base/utilities";
 
 @import "components/buttons";
+@import "components/composition";
 
 @import 'layout/grid';
 @import "layout/header";
@@ -62,7 +63,7 @@ Dark green: #28b485
 //   line-height: 1.7;
 //   color: $color-grey-dark;
 //   /* padding: 30px; */
-//   padding: 3 rem;
+//   padding: 3rem;
   
 //   /* border box allows padding and borders to canabalize within the true width/height of the div
 //   in order to preserve the true width and height sizing that you want to be  */

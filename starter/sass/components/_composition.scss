@@ -1,0 +1,51 @@
+.composition{
+    position: relative;
+    //this makes the picture small to fit into the composition div
+
+    &__photo{
+        //it is good to describe images in percentages so they scale down nicely
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black,.4);
+        border-radius: 2px;
+        position: absolute;
+        // position absolute in order to have picture one on top of each other
+        // when we set the position to absolute on an element
+        // these element will be placed according to a reference and the reference 
+        // is the first parent it encounters, which has its position set to something
+        //so the 0,0 coordinate will be the top left corner of .composition
+        //so now the pictures are all lined up with each other
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem;
+
+
+        &--p1{
+            left: 0;
+            top: -2rem; //goes up
+        }
+
+        &--p2{
+            right: 0;
+            top: 2rem; //goes down
+        }
+
+        &--p3{
+            left: 20%; // goes to the right
+            top: 10rem; // goes further down
+        }
+
+        &:hover{
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black,.5);
+            z-index:20; //z-index makes the image pop. z-index here greater than the stated first
+            
+        }
+    }
+
+    &:hover &__photo:not(:hover){ //when you hover over the composition and select the photos within that composition that is not hovered over
+        transform: scale(.95); //other photos not selected will shrink
+    }
+    //composition:hover composition__photo:not(:hover)
+
+}
