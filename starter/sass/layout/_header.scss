@@ -16,7 +16,7 @@
     background-position: top;
     /* always allow picture to stay at the top when you crop the broswer; */
     position: relative;
-  
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
     /* to create the triangle clip off of the picture */
     /*specify four corners of the polygon to save what part of the picture , define points clockwise*/

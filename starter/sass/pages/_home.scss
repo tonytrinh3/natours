@@ -13,11 +13,17 @@
     url(../img/nat-4.jpg);
     background-size: cover;
 
-    transform: skewY(-7deg);//to make that background have those angles
+  transform: skewY(-7deg);//to make that background have those angles
   margin-top: -10rem;
   
     //bottom is a direct selector to the closes direct child of this parent, only touches to the nearest div below it
-    & > *{
-      transform: skewY(7deg); //skews everything back to normal - so in this case it affects the class=row
-    }
+  & > *{
+    transform: skewY(7deg); //skews everything back to normal - so in this case it affects the class=row
+  }
+}
+
+.section-tours{
+  background-color: $color-grey-light-1;
+  padding: 25rem 0 50rem 0; // this buildings how large the section is
+  margin-top: -16rem;
 }
