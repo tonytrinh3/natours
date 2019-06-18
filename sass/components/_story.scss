@@ -1,0 +1,66 @@
+.story{
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black,.1);
+    background-color: rgba($color-white,.6);
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+    
+
+
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        float: left; //this will make all of the text wrap around the shape
+        -webkit-shape-outside: circle(50% at 50% 50%); //50% of the width to make radius, 50% 50% is center of circle
+        shape-outside: circle(50% at 50% 50%); //50% of the width to make radius, 50% 50% is center of circle
+        -webkit-clip-path:circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg);//we do separate skew bc we have a translate here which takes first over skew so we need to separate the skew
+        position: relative; //set the container of the caption to position relative - container is story shape
+    }
+
+    &__img{
+        //used height instead of width bc img width is larger than height, so fill 100% height instead
+        height: 100%; //since the img is inside a well defined shaped with a dimension, then we want the image to take up 100% of that picture
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+        transition: all .2s;
+    }
+
+    &__text{
+        transform: skewX(12deg);
+    }
+
+    &__caption{
+        position: absolute;
+        top: 50%;//move the caption to be in the middle of the shape 
+        left: 50%;
+        transform: translate(-50%,20%);//move the point of translation from top left to the middle of the caption box
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .2s;
+        backface-visibility: hidden; //to deal with some pixel issues
+    }
+
+    &:hover &__caption{ //as soon as the story is hovered over, we should change the caption
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+    }
+
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1); 
+        //still need to keep translateX in order to preserve the translate 
+        //from the initial picture because you translate first to get the picture fitting
+        filter: blur(3px) brightness(80%);
+
+    }
+    
+}
