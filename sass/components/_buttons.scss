@@ -1,4 +1,6 @@
 .btn{
+  //button element doesn't have link or visted psuedo class - anchor tag does
+    &,//this &, captures all and for button - less 47
     &:link,
     &:visited{
       text-transform: uppercase;
@@ -15,6 +17,10 @@
       transition: all 0.1s;
       position: relative;
       font-size: $default-font-size;
+
+      //change for the <button> element
+      border: none;
+      cursor: pointer;
     }
     
     /* this makes button go up when you hover your cursor over the button
@@ -32,7 +38,9 @@
     }
     
     /* btn:active is when you active the button. this makes the button press down when you press down */
-    &:active{
+    &:active,
+    &:focus{
+      outline:none; //to remove blue outline around button that is default in browser - lesson 47
       transform: translateY(-1px);
       /* box-shadow: 0 5px 10px rgba(0,0,0,0.2); */
       box-shadow: 0 .5rem 1rem rgba($color-black,0.2);

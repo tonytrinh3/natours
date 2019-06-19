@@ -1,0 +1,107 @@
+.form{
+    &__group:not(:last-child){ 
+        //i guess you have a grouping around the input and label is to apply something to both childs - same time and code
+        //you could also apply margin-bottom to both input and label but...you are going to do that for everything else you put at the bottom, 
+        //it is better to group common features in the parent group
+        margin-bottom: 2rem;
+    }
+    &__input{
+        font-size:1.5rem;
+        font-family: inherit; //need to state specifically - inherit font family from body
+        color:inherit; // in order for the input to have same color 
+        padding: 1.5rem 2rem; //do this typically for forms - give more for side elements - to make it look better
+        border-radius: 2px;
+        background-color: rgba($color-white,.5);
+        border:none;
+        border-bottom: 3px solid transparent;//add border in order to compensate for reduction of border for border-bottom
+        display:block; //to take up its own space 
+        width: 90%; //to display the width of the section__form
+
+        &:focus{//pseudo-class
+            outline: none;
+            //still need to add box shadow and border bottom in order to show that you selected the form
+            //for accessibility purposes
+            box-shadow: 0 1rem 2rem rgba($color-black, .1); 
+            border-bottom: 3px solid $color-primary;
+        }
+
+        &:focus:invalid{
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+    
+        &::-webkit-input-placeholder{ //pseudo-element - select input placeholders and make the color different
+            color: $color-grey-dark-2;
+        }
+    }
+
+    &__label{
+        font-size: 1.2rem;
+        font-weight:700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    &__input:placeholder-shown + &__label{//some nearby selector
+        //you do this in order to show label after you type in some stuff in the input 
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);//bring down the label when you start typing
+    }
+
+    &__radio-group{
+        width: 49%;
+        display: inline-block;   
+    }
+
+    &__radio-input{
+        // visibility: hidden;
+        //the padding around the input pushes the input out of the way and leaves room for the custom radio-button to be in the right place
+        display: none;
+    }
+
+    &__radio-label{
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;//parent needs to be relative in order radio-button's absolute position to work
+        padding-left: 4.5rem;
+    }
+
+    &__radio-button{
+        height: 3rem;
+        width: 3rem;
+        border: 5px solid $color-primary;
+        border-radius: 50%;
+        display:inline-block;
+        position: absolute;
+        left: 0;
+        top: -.4rem;
+
+        &::after{
+            content:"";
+            display: block;
+            height: 1.3rem;
+            width: 1.3rem;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: $color-primary;
+            opacity: 0;
+            transition: all .2s;
+        }
+    }
+    //we are using sibling selector to first select radio-label (or select a label) bc it is the parent of radio-button
+    //and then select the child of radio-label bc we want to change the radio-button::after
+    //you need to do this bc radio-button isn't a direct child of radio-input
+    //when radio-button is checked and then when we are using radio-button::after
+    //we want to change the radio-button every time the radio-input is selected
+    
+    //you have to do this - if you leave out radio-label, it doesn't work 
+    &__radio-input:checked + &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+
+}
