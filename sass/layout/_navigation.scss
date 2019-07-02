@@ -13,6 +13,8 @@
         border-radius: 50%;
         z-index: 2000; //this is highest z index so it is in front the most
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
     }
 
     &__background{
@@ -26,7 +28,7 @@
         z-index: 1000; //to be front all the time
 
         // transform: scale(80);
-        transition: transform .8s;
+        transition: transform .8s cubic-bezier(0.86,0, 0.07, 1); //cubic-bezier is for transition acceleration time
     }
 
     &__nav{
@@ -36,11 +38,11 @@
         top: 0;
         left: 0;
         z-index: 1500;
-        background: orangered;
+        // background: orangered;
 
         opacity:0;
         width: 0;//you make width zero in order to not have any links from the navs show
-        transition: all .8s;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     }
 
@@ -71,7 +73,7 @@
             text-transform: uppercase;
             //start at 0%, and then half orangered and white
             background-image: linear-gradient(120deg, transparent 0%,transparent 50%, $color-white 50%); //this creates the angle transition 
-            background-size: 220%;
+            background-size: 225%; //background size at 100% is half of the words 
             transition: all .4s;
 
             span{
@@ -88,6 +90,8 @@
         }
 
     }
+
+    //FUNCTIONALITY
     &__checkbox:checked ~ &__background{ //&__background is general sibling to select 
         transform: scale(80);
     }
@@ -97,4 +101,74 @@
         opacity: 1;
         width: 100%;
     }
+
+    //ICON
+    &__icon{
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after{
+            width: 3rem;
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after{
+            content: ""; //need to show that content has something in order for the content to display something
+            position: absolute; // you want the element to be on top of the center leader then you start playing their top and bottom location
+            left: 0; //you want the before and after psuedo class be pushed to the left
+            transition: all .2s;
+        }
+
+        &::before{ //before is bottom...
+            top: -.8rem;
+        }
+
+        &::after{//after is top
+            top: .8rem;
+        } 
+        // this is my attempt. i stated that i hover each individual element
+        // &:hover{
+        //     &::before{
+        //         top: -1rem;
+        //         transition: all .8s;
+        //     }
+
+        //     &::after{
+        //         top: 1rem;
+        //     }
+        // }
+
+    }
+
+    &__button:hover &__icon::before{
+        top: -1rem; //negative goes up in this position apparentl
+    }
+
+    &__button:hover &__icon::after{
+        top: 1rem;
+    }
+
+    //button is the closest/adacent sibling to checkbox and icon is the child to button
+    //when the check box is checked , then we select its brother, the button, and then we select the buttons child, icon
+    //this basically says when checkboxed is check, then do some change to the icon
+    &__checkbox:checked + &__button &__icon{
+        background-color: transparent; // to make the middle line dissapear
+    }
+
+    &__checkbox:checked + &__button &__icon:before{
+        top: 0;
+        // transform: rotate(45deg); //to create the cross
+        transform: rotate(135deg); //to add some more stylistic element
+    } 
+
+    &__checkbox:checked + &__button &__icon:after{
+        top: 0; //to move them to the middle
+        // transform: rotate(-45deg);
+        transform: rotate(-135deg);
+    } 
 }
