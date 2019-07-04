@@ -1,0 +1,99 @@
+.popup{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0; //why do you have to define these
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 9999; //always in front 
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    &__content{
+        @include absCenter;
+        width: 75%;//i want the width of the content to be 75% of the parent element
+        //maybe because you already established the width so the height is automatic
+      
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        display: table;
+        overflow:hidden;//in order to perserve border radius from picture 
+
+        opacity: 0;
+        //you do all of this to make the popup come towards you - you scale from big to small to make the effect
+        transform: translate(-50%, -50%) scale(.25); //need to repeat translate bc only one transform can occur per element
+        transition: all .4s .2s; //.2s delay
+    }
+
+    &__left{
+        width: 33.33333333%;
+        // float: left;
+        display: table-cell; //browser automatically gives them same height
+
+    }
+
+    &__right{
+        width: 66.666666667%;
+        // float: left;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+    }
+    
+    &__img{
+        display: block;
+        width: 100%;
+        
+    }
+
+    &__text{
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        -moz-column-count: 2; //make into 2 columns
+        -moz-column-gap: 4rem; //1em = 14px;
+        -moz-column-rule: 1px solid $color-grey-light-2; //line to separate it
+
+        column-count: 2; //make into 2 columns
+        column-gap: 4rem; //1em = 14px;
+        column-rule: 1px solid $color-grey-light-2; //line to separate it
+
+        -moz-hyphens: auto; //need to specify lang=en at the head of the html
+        -ms-hyphens: auto; //need to specify lang=en at the head of the html
+        -webkit-hyphens: auto; //need to specify lang=en at the head of the html
+        hyphens: auto; //need to specify lang=en at the head of the html
+    }
+
+    //open states
+    &:target{//when the url changes to have target this
+        opacity: 1;
+        visibility: visible;  
+    }
+
+    &:target &__content{ //when popup is targeted, we style the child element
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+    }
+
+    &__close{
+        &:link,
+        &:visited{
+            color: $color-grey-dark;
+            position: absolute; //don't need to specify position for popup right bc popup content has it
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .2s;
+            line-height: 1;//so it is in a separate line?
+
+        }
+
+        &:hover{
+            color: $color-primary;
+        }
+    }
+}
