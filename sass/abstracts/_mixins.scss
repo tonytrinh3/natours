@@ -17,3 +17,45 @@
 // // A clearfix is a way for an element to automatically clear its 
 // child elements, so that you don't need to add additional markup. 
 // It's generally used in float layouts where elements are floated to be stacked horizontally.
+
+
+
+//MEDIA QUERY MANAGER
+/*
+0-600px: phone
+600-900px: tablet portrait 
+900-1200px: tablet landscape
+[1200-1800] is where our normal styles apply
+1800px + : big desktop
+*/
+
+//@content allows us to put a lot of code into the mixin
+// @mixin respond-phone {
+//   @media (max-width: 600px) { @content };
+// }
+
+// $breakpoint arguement choices:
+// -phone
+// -tab-portrait
+// -tab-landscape
+// -big desktop
+
+//rem and em isn't affected by root font size setting, the percentage
+//rem fails in some browsers for media query
+//1em = 16px;
+
+@mixin respond($breakpoint){
+  @if $breakpoint == phone{
+    @media (max-width: 37.5em) { @content }; //600px
+  }
+  @if $breakpoint == tab-port{
+    @media (max-width: 56.25em ) { @content }; //900 px
+  }
+  @if $breakpoint == tab-land{
+    @media (max-width: 75em) { @content };  //1200px
+  }
+  @if $breakpoint == big-desktop{
+    @media (max-width: 112.5em ) { @content };  //1800px
+  }
+
+}

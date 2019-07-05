@@ -1,3 +1,10 @@
+/*
+0-600px: phone
+600-900px: tablet portrait 
+900-1200px: tablet landscape
+[1200-1800] is where our normal styles apply
+1800px + : big desktop
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -55,11 +62,24 @@ html {
   /* font-size: 10px; */
   font-size: 62.5%;
   /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */ }
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   /* border box allows padding and borders to canabalize within the true width/height of the div
   in order to preserve the true width and height sizing that you want to be  */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 3rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -67,8 +87,7 @@ body {
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  /* padding: 30px; */
-  padding: 3rem; }
+  /* padding: 30px; */ }
 
 .heading-primary {
   color: #fff;
@@ -92,6 +111,10 @@ body {
     animation-iteration-count: 3;
     
     */ }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: 1rem;
+        font-size: 5rem; } }
   .heading-primary--sub {
     display: block;
     /* font-size: 20px; */
@@ -100,6 +123,9 @@ body {
     /* letter-spacing: 17.4px; */
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -111,6 +137,12 @@ body {
   color: transparent;
   letter-spacing: 2px;
   transition: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(2deg) skewX(15deg) scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -489,7 +521,8 @@ body {
     overflow: hidden;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.25);
-    transition: all .4s .2s; }
+    transition: all .4s .2s;
+    z-index: 9999; }
   .popup__left {
     width: 33.33333333%;
     display: table-cell; }
@@ -532,6 +565,13 @@ body {
     line-height: 1; }
   .popup__close:hover {
     color: #55c57a; }
+  .popup__close2 {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998; }
 
 .story {
   width: 75%;
@@ -622,6 +662,9 @@ body {
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
   .row::after {
     content: "";
     display: table;
@@ -631,6 +674,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc( (100% - 6rem) / 2); }
   .row .col-1-of-3 {

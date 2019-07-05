@@ -25,6 +25,7 @@
         //you do all of this to make the popup come towards you - you scale from big to small to make the effect
         transform: translate(-50%, -50%) scale(.25); //need to repeat translate bc only one transform can occur per element
         transition: all .4s .2s; //.2s delay
+        z-index: 9999; //to be higher than the invisible closed background
     }
 
     &__left{
@@ -95,5 +96,14 @@
         &:hover{
             color: $color-primary;
         }
+    }
+
+    &__close2{ //allow you to close the popup from the background as well
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top: 0; //why do you have to define these
+        left: 0;
+        z-index: 9998;
     }
 }

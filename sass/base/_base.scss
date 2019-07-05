@@ -15,13 +15,40 @@ html{
   the pixel just overrides what user can change
   10/16 = 62.5% bc 100% is 16 but you really just want 10 */
   /* font-size: 10px; */
-  font-size: 62.5%;
+
+  font-size: 62.5%; //1rem = 10px; 10px/16px = 62.5%
   /* 10 px is the root font size in order to use rem/em easily bc multiple of 10 - 1 rem = 10 px */
+
+  //doing this to resuse the same function with different inputs
+  // @include respond(phone){ //bc tab-port is same as phone
+  //   font-size: 50%;
+  // }
+  
+  //since cascade rule of specificity is all same for media query, then you would have to put them from large to small to make them work
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16 = 75%
+  }
+  @include respond(tab-land) { //is width < 1200px?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) { // width < 900px?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+
 }
 
 body{
-  
+
   /* border box allows padding and borders to canabalize within the true width/height of the div
   in order to preserve the true width and height sizing that you want to be  */
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) { 
+    padding: 0; 
+  }
+  
+
 }
