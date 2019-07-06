@@ -16,6 +16,11 @@
         }
     }
 
+    @include respond(tab-port){
+       max-width:50rem; //to make the cards have a space on the sides 
+       padding: 0 3rem; //to have padding on rows ep 57
+    }
+
     @include clearfix;
 
 
